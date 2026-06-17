@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fabric Cost Calculator</title>
+    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="background-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    
+    <main class="app-container glass-panel">
+      <header class="header-with-select">
+        <div class="header-left">
+          <div class="costing-mode-selector">
+            <button class="mode-btn mode-btn-active" data-mode="easy">Easy Costing</button>
+            <button class="mode-btn" data-mode="full">Full Costing</button>
+          </div>
+        </div>
+        <div class="header-content">
+          <img src="/logo.png" alt="Fabric Cost Calculator Logo" style="width: 80px; height: 80px; border-radius: 20px; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(138, 43, 226, 0.4);" />
+          <h1 id="calc-title">Jacquard Fabric Costing Calculator</h1>
+          <p id="calc-subtitle">Premium accuracy for your Jacquard fabric costing</p>
+        </div>
+        <div class="header-select">
+          <select id="loom-type-select" class="loom-select">
+            <option value="jacquard">Jacquard</option>
+            <option value="air-jet">Air Jet</option>
+            <option value="water-jet">Water Jet</option>
+          </select>
+        </div>
+      </header>
+      
+      <div id="easy-mode-panel">
+        <div class="content-grid">
+          <section class="card glass-panel-inner">
+            <h2>Warp Parameters</h2>
+            <div id="warp-container" class="item-container"></div>
+            <button id="add-warp-btn" class="btn btn-outline">+ Add Warp</button>
+          </section>
+          
+          <section class="card glass-panel-inner">
+            <h2>Weft Parameters</h2>
+            <div id="weft-container" class="item-container"></div>
+            <button id="add-weft-btn" class="btn btn-outline">+ Add Weft</button>
+          </section>
+          
+          <section class="card glass-panel-inner full-width">
+            <h2>Global Parameters</h2>
+            <div class="input-row global-input-row">
+              <div class="input-group">
+                <label>Pano / Inch</label>
+                <input type="number" id="pano" placeholder="0">
+              </div>
+              <div class="input-group">
+                <label>Wastage (%)</label>
+                <input type="number" id="wastage" placeholder="0">
+              </div>
+              <div class="input-group">
+                <label>Job Charge / Pick</label>
+                <input type="number" id="jobCharge" placeholder="0">
+              </div>
+
+              <div class="input-group">
+                <label>Meters</label>
+                <input type="number" id="meter" placeholder="1" value="1">
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        <div class="actions">
+          <button id="calculate-btn" class="btn btn-primary">Calculate Cost</button>
+          <button id="clear-btn" class="btn btn-secondary">Clear All</button>
+        </div>
+        
+        <section id="results-section" class="card glass-panel-inner result-card hidden">
+          <h2 style="margin-bottom: 2rem;">Calculation Results</h2>
+          <div class="content-grid" style="margin-bottom: 0;">
+            <div>
+              <h3 style="text-align: center; margin-bottom: 1rem; color: var(--text-muted); font-size: 1.1rem; font-weight: 500;">Per 1 Meter</h3>
+              <div class="results-grid">
+                <div class="result-item">
+                  <span class="label">Yarn Cost</span>
+                  <span class="value" id="res-yarn-cost-1">0.00</span>
+                </div>
+                <div class="result-item">
+                  <span class="label">Job Cost</span>
+                  <span class="value" id="res-job-cost-1">0.00</span>
+                </div>
+                <div class="result-item highlight">
+                  <span class="label">Total Cost</span>
+                  <span class="value" id="res-total-1">0.00</span>
+                </div>
+                <div class="result-item" id="res-kg-item-1" style="display: none;">
+                  <span class="label">Kg</span>
+                  <span class="value" id="res-kg-1">0.00</span>
+                </div>
+              </div>
+            </div>
+            <div>
+              <h3 id="results-n-title" style="text-align: center; margin-bottom: 1rem; color: var(--text-muted); font-size: 1.1rem; font-weight: 500;">For N Meters</h3>
+              <div class="results-grid">
+                <div class="result-item">
+                  <span class="label">Yarn Cost</span>
+                  <span class="value" id="res-yarn-cost-n">0.00</span>
+                </div>
+                <div class="result-item">
+                  <span class="label">Job Cost</span>
+                  <span class="value" id="res-job-cost-n">0.00</span>
+                </div>
+                <div class="result-item highlight">
+                  <span class="label">Total Cost</span>
+                  <span class="value" id="res-total-n">0.00</span>
+                </div>
+                <div class="result-item" id="res-kg-item-n" style="display: none;">
+                  <span class="label">Kg</span>
+                  <span class="value" id="res-kg-n">0.00</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="full-mode-panel" class="hidden">
+
+        <section class="card glass-panel-inner full-proper-card">
+          <h2>Production Calculation</h2>
+          <div class="input-row khata-input-row">
+            <div class="input-group">
+              <label>Machine RPM</label>
+              <input type="number" id="prod-rpm" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Efficiency</label>
+              <input type="number" id="prod-eff" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Avg Pick</label>
+              <input type="number" id="prod-pick" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Pana</label>
+              <input type="number" id="prod-pana" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>MTR/saree cut</label>
+              <input type="number" id="prod-mtr" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Saree/All Over per Day</label>
+              <input type="number" id="prod-saree" placeholder="0" readonly>
+            </div>
+            <div class="input-group">
+              <label>Total Loom</label>
+              <input type="number" id="prod-loom" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Days/Month</label>
+              <input type="number" id="prod-days" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Total Monthly Production</label>
+              <input type="number" id="prod-month" placeholder="0" readonly>
+            </div>
+          </div>
+        </section>
+
+        <section id="jet-parameters-section" class="card glass-panel-inner hidden">
+          <h2>Jet Parameters</h2>
+          <div class="input-row khata-input-row">
+            <div class="input-group">
+              <label>GSM</label>
+              <input type="number" id="gsm" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>KG</label>
+              <input type="number" id="kg-full" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Pana</label>
+              <input type="number" id="pana-full" placeholder="0">
+            </div>
+          </div>
+        </section>
+
+        <section class="card glass-panel-inner full-khata-card">
+          <h2>Khata Expense</h2>
+          <div class="input-row khata-input-row">
+            <div class="input-group">
+              <label>Light Bill</label>
+              <input type="number" id="khata-light" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Karigar</label>
+              <input type="number" id="khata-karigar" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Helper</label>
+              <input type="number" id="khata-helper" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Master</label>
+              <input type="number" id="khata-master" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Supervisor</label>
+              <input type="number" id="khata-supervisor" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Tempo Rent</label>
+              <input type="number" id="khata-tempo" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Watchman</label>
+              <input type="number" id="khata-watchman" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Maintenance</label>
+              <input type="number" id="khata-maintenance" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Extra Expense</label>
+              <input type="number" id="khata-extra" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>EMI</label>
+              <input type="number" id="khata-emi" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Total Khata Expense</label>
+              <input type="number" id="khata-total" placeholder="0" readonly>
+            </div>
+          </div>
+        </section>
+
+        <section class="card glass-panel-inner full-proper-card">
+          <h2>Proper Costing</h2>
+          <div class="input-row khata-input-row">
+            <div class="input-group">
+              <label>Mtr / Saree Cut</label>
+              <input type="text" id="proper-mtr-saree" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Monthly Production</label>
+              <input type="number" id="proper-monthly-prod" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Your Product Costing</label>
+              <input type="number" id="proper-product-costing" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Unit Price (Product Cost + Khata Expense)</label>
+              <input type="number" id="proper-unit-price" placeholder="0" readonly>
+            </div>
+            <div class="input-group">
+              <label>Your Selling Price</label>
+              <input type="number" id="proper-selling-price" placeholder="0">
+            </div>
+            <div class="input-group">
+              <label>Your Profit</label>
+              <input type="number" id="proper-profit" placeholder="0" readonly>
+            </div>
+            <div class="input-group">
+              <label>Month Total Profit</label>
+              <input type="number" id="proper-month-total-profit" placeholder="0" readonly>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+    <template id="warp-template">
+      <div class="item-row warp-item">
+        <div class="input-group">
+          <label>Reed</label>
+          <input type="number" class="w-read" placeholder="0">
+        </div>
+        <div class="input-group">
+          <label>Denier</label>
+          <input type="number" class="w-denier" placeholder="0">
+        </div>
+        <div class="input-group">
+          <label>Rate / Kg</label>
+          <input type="number" class="w-rate" placeholder="0">
+        </div>
+        <button class="remove-btn" title="Remove">×</button>
+      </div>
+    </template>
+
+    <template id="weft-template">
+      <div class="item-row weft-item">
+        <div class="input-group">
+          <label>Pick</label>
+          <input type="number" class="we-pick" placeholder="0">
+        </div>
+        <div class="input-group">
+          <label>Denier</label>
+          <input type="number" class="we-denier" placeholder="0">
+        </div>
+        <div class="input-group">
+          <label>Rate / Kg</label>
+          <input type="number" class="we-rate" placeholder="0">
+        </div>
+        <button class="remove-btn" title="Remove">×</button>
+      </div>
+    </template>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

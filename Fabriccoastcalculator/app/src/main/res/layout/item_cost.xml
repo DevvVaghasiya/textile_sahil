@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:textSize="@dimen/_16sdp"
+        android:textColor="@color/subTextColor"
+        android:id="@+id/tvLabel1"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/read"
+        android:fontFamily="@font/inter_medium"
+        app:layout_constraintEnd_toEndOf="@+id/editView1"
+        app:layout_constraintStart_toStartOf="@+id/editView1"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:textSize="@dimen/_16sdp"
+        android:textColor="@color/subTextColor"
+        android:id="@+id/tvLabel2"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/denier"
+        android:fontFamily="@font/inter_medium"
+        app:layout_constraintEnd_toEndOf="@+id/editView2"
+        app:layout_constraintStart_toStartOf="@+id/editView2"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:textSize="@dimen/_16sdp"
+        android:textColor="@color/subTextColor"
+        android:id="@+id/tvLabel3"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:text="@string/rate"
+        android:fontFamily="@font/inter_medium"
+        app:layout_constraintEnd_toEndOf="@+id/editView3"
+        app:layout_constraintStart_toStartOf="@+id/editView3"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:textSize="@dimen/_13sdp"
+        android:textColor="@color/subTextColor2"
+        android:gravity="center"
+        android:id="@+id/tvLabel"
+        android:background="@drawable/bg_lable"
+        android:layout_width="@dimen/_70sdp"
+        android:layout_height="0dp"
+        android:text="@string/wrap"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/inter_bold"
+        android:layout_marginStart="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/editView1"
+        app:layout_constraintEnd_toStartOf="@+id/editView1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/editView1"/>
+
+    <EditText
+        android:textColor="@color/title_txt_color"
+        android:gravity="center"
+        android:id="@+id/editView1"
+        android:background="@drawable/bg_edit"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:maxLength="5"
+        android:inputType="numberDecimal"
+        android:textCursorDrawable="@null"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toEndOf="@+id/tvLabel"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabel1"/>
+
+    <EditText
+        android:textColor="@color/title_txt_color"
+        android:gravity="center"
+        android:id="@+id/editView2"
+        android:background="@drawable/bg_edit"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:maxLength="3"
+        android:inputType="number"
+        android:textCursorDrawable="@null"
+        app:layout_constraintEnd_toStartOf="@+id/editView3"
+        app:layout_constraintStart_toEndOf="@+id/editView1"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabel2"/>
+
+    <EditText
+        android:textColor="@color/title_txt_color"
+        android:gravity="center"
+        android:id="@+id/editView3"
+        android:background="@drawable/bg_edit"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:maxLength="3"
+        android:inputType="number"
+        android:textCursorDrawable="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editView2"
+        app:layout_constraintTop_toBottomOf="@+id/tvLabel3"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

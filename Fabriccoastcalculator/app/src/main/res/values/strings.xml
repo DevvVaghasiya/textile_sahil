@@ -1,0 +1,37 @@
+<resources>
+
+    <string name="app_name">Febric Cost Calculator</string>
+    <string name="btnCalculate">CALCULATE</string>
+    <string name="btnClearAll">CLEARALL</string>
+    <string name="count">COUNT</string>
+    <string name="denier">Denier</string>
+    <string name="exit">Are you sure you want to exit?</string>
+    <string name="inch">Inch</string>
+    <string name="job_charge">Job charge</string>
+    <string name="job_cost">JOB COST</string>
+    <string name="letter">Letter</string>
+    <string name="meter">METER</string>
+    <string name="no">NO</string>
+    <string name="pano">Pano</string>
+    <string name="percentage">%</string>
+    <string name="pick">Pick</string>
+    <string name="pick_wise">pick wise (paisa)</string>
+    <string name="rate">Rate</string>
+    <string name="rate_msg">Tell others what you like in this App.</string>
+    <string name="rate_now">Rate now</string>
+    <string name="rate_us">Rate us</string>
+    <string name="read">Reed</string>
+    <string name="search_menu_title">Search</string>
+    <string name="setting">setting</string>
+    <string name="share">Share with Friend</string>
+    <string name="share_sub">Share app with your friends &amp; Family</string>
+    <string name="title">FABRIC COST CALCULATOR</string>
+    <string name="to_denier">To Denier</string>
+    <string name="wastage">Wastage</string>
+    <string name="weft">WEFT</string>
+    <string name="wrap">WARP</string>
+    <string name="yarn_cost">YARN COST</string>
+    <string name="yarn_job">YARN + JOB</string>
+    <string name="yes">YES</string>
+    <string name="hint">&#63;</string>
+</resources>

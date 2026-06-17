@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:aapt="http://schemas.android.com/aapt" android:layout_width="match_parent" android:layout_height="wrap_content">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@+id/llRate" android:background="#ffffff" android:paddingBottom="20dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="20sp" android:textColor="#000000" android:gravity="center" android:id="@+id/tv2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:text="@string/exit"/>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginLeft="10dp" android:layout_marginTop="25dp" android:layout_marginRight="10dp" android:weightSum="2">
+            <TextView android:textSize="@dimen/_14sdp" android:textColor="@color/white" android:gravity="center" android:id="@+id/btn_no" android:background="@drawable/btn_calculate" android:paddingTop="@dimen/_5sdp" android:paddingBottom="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/no" android:includeFontPadding="false" android:fontFamily="@font/inter_bold" android:paddingStart="@dimen/_10sdp" android:paddingEnd="@dimen/_10sdp"/>
+            <TextView android:textSize="@dimen/_14sdp" android:textColor="@color/white" android:gravity="center" android:id="@+id/btn_yes" android:background="@drawable/btn_clearall" android:paddingTop="@dimen/_5sdp" android:paddingBottom="@dimen/_5sdp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/yes" android:includeFontPadding="false" android:fontFamily="@font/inter_bold" android:paddingStart="@dimen/_10sdp" android:paddingEnd="@dimen/_10sdp" android:layout_marginStart="@dimen/_10sdp"/>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

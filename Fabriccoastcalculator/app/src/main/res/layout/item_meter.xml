@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:textSize="@dimen/_11sdp"
+        android:textColor="@color/text_label"
+        android:gravity="center"
+        android:id="@+id/label_meter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="@string/meter"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/inter_bold"
+        app:layout_constraintEnd_toStartOf="@+id/label_yarn_cost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/label_meter"
+        app:layout_constraintStart_toStartOf="@+id/label_meter"
+        app:layout_constraintTop_toBottomOf="@+id/label_meter">
+
+        <EditText
+            android:textColor="@color/title_txt_color"
+            android:gravity="center"
+            android:id="@+id/editView1"
+            android:background="@drawable/bg_edit"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:hint="@string/hint"
+            android:maxLength="3"
+            android:inputType="numberDecimal"
+            android:textCursorDrawable="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:textColor="@color/title_txt_color"
+            android:gravity="center"
+            android:id="@+id/tvMeter"
+            android:background="@drawable/bg_edit"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:textCursorDrawable="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:textSize="@dimen/_11sdp"
+        android:textColor="@color/text_label"
+        android:gravity="center"
+        android:id="@+id/label_yarn_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/yarn_cost"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/inter_bold"
+        app:layout_constraintEnd_toStartOf="@+id/label_job_cost"
+        app:layout_constraintStart_toEndOf="@+id/label_meter"
+        app:layout_constraintTop_toTopOf="@+id/label_meter"/>
+
+    <TextView
+        android:textColor="@color/title_txt_color"
+        android:gravity="center"
+        android:id="@+id/tvYarnCost1"
+        android:background="@drawable/bg_edit"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:maxLength="5"
+        app:layout_constraintEnd_toEndOf="@+id/label_yarn_cost"
+        app:layout_constraintStart_toStartOf="@+id/label_yarn_cost"
+        app:layout_constraintTop_toTopOf="@+id/constraintView"/>
+
+    <TextView
+        android:textSize="@dimen/_11sdp"
+        android:textColor="@color/text_label"
+        android:gravity="center"
+        android:id="@+id/label_job_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/job_cost"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/inter_bold"
+        app:layout_constraintEnd_toStartOf="@+id/label_yarn_job"
+        app:layout_constraintStart_toEndOf="@+id/label_yarn_cost"
+        app:layout_constraintTop_toTopOf="@+id/label_meter"/>
+
+    <TextView
+        android:textColor="@color/title_txt_color"
+        android:gravity="center"
+        android:id="@+id/tvJobCost1"
+        android:background="@drawable/bg_edit"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:maxLength="5"
+        android:textCursorDrawable="@null"
+        app:layout_constraintEnd_toEndOf="@+id/label_job_cost"
+        app:layout_constraintStart_toStartOf="@+id/label_job_cost"
+        app:layout_constraintTop_toTopOf="@+id/constraintView"/>
+
+    <TextView android:textSize="@dimen/_11sdp"
+        android:textColor="@color/text_label"
+        android:gravity="center"
+        android:id="@+id/label_yarn_job"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/yarn_job"
+        android:includeFontPadding="false"
+        android:fontFamily="@font/inter_bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toEndOf="@+id/label_job_cost"
+        app:layout_constraintTop_toTopOf="@+id/label_meter"/>
+
+    <TextView
+        android:textColor="@color/title_txt_color"
+        android:gravity="center"
+        android:id="@+id/tvYarnJob1"
+        android:background="@drawable/bg_edit"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_20sdp"
+        android:maxLength="5"
+        android:textCursorDrawable="@null"
+        app:layout_constraintEnd_toEndOf="@+id/label_yarn_job"
+        app:layout_constraintStart_toStartOf="@+id/label_yarn_job"
+        app:layout_constraintTop_toTopOf="@+id/constraintView"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

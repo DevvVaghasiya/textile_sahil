@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.FabricCalculator" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--  Primary brand color.  -->
+        <item name="colorPrimary">@color/main_bg</item>
+        <item name="colorPrimaryVariant">@color/main_bg</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!--  Status bar color.  -->
+        <item name="android:statusBarColor">@color/main_bg</item>
+
+    </style>
+</resources>
