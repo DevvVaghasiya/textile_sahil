@@ -1,7 +1,11 @@
 import './style.css';
 
-// Configure API base URL - use environment variable or fallback to localhost
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+// Configure API base URL - use environment variable or fallback to deployed backend
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://textile-sahil-backend.onrender.com';
+
+// Debug: log the API URL being used
+console.log('API_BASE_URL:', API_BASE_URL);
+console.log('VITE_API_URL env var:', import.meta.env.VITE_API_URL);
 
 let currentCostingMode = 'easy';
 
@@ -163,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+        throw new Error(`Server error: ${response.status} ${response.statusText}`);
       }
 
       const data = await response.json();
@@ -204,8 +208,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 50);
 
     } catch (err) {
-      console.error(err);
-      alert('Error connecting to calculation server. Make sure the backend is running.');
+      console.error('API Error:', err);
+      console.error('API_BASE_URL:', API_BASE_URL);
+      alert(`Error connecting to calculation server: ${err.message}\n\nBackend URL: ${API_BASE_URL}`);
     }
   });
 
